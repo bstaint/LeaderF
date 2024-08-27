@@ -20,7 +20,7 @@ def cursorController(func):
         lfCmd("call add(g:lf_gcr_stack, &gcr)")
         if lfEval("has('nvim')") == '1':
             lfCmd("hi Cursor blend=100")
-            lfCmd("set gcr+=a:ver1-Cursor/lCursor")
+            # lfCmd("set gcr+=a:ver1-Cursor/lCursor")
         else:
             lfCmd("set gcr=a:invisible")
 
@@ -371,8 +371,8 @@ class LfCli(object):
                   escQuote(''.join(self._cmdline[self._cursor_pos])))
             lfCmd("echohl Normal | echon '%s' | echohl NONE" %
                   escQuote(''.join(self._cmdline[self._cursor_pos+1:])))
-        else:
-            lfCmd("echohl Lf_hl_cursor | echon ' ' | echohl NONE")
+        # else:
+        #    lfCmd("echohl Lf_hl_cursor | echon ' ' | echohl NONE")
         lfCmd("redraw")
 
     def _buildPattern(self):

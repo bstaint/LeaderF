@@ -38,12 +38,13 @@ class AsyncExecutor(object):
     def execute(self, cmd, encoding=None, cleanup=None, env=None,
                 raise_except=True, format_line=None, cwd=None):
         if os.name == 'nt':
+            cwd = os.getcwd()
             self._process = subprocess.Popen(cmd, bufsize=-1,
                                              stdin=lfDEVNULL,
                                              stdout=subprocess.PIPE,
                                              stderr=subprocess.PIPE,
                                              shell=True,
-                                             cwd=cwd,
+                                             cwd=os.getenv('TEMP') if cwd[:2] == r'\\' else cwd,
                                              env=env,
                                              universal_newlines=False)
         else:
