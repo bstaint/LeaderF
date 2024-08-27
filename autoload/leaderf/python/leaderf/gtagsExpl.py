@@ -12,6 +12,9 @@ from .utils import *
 from .explorer import *
 from .manager import *
 
+if 'PYTHONHOME' in os.environ:
+    os.environ.pop('PYTHONHOME')
+
 if sys.version_info >= (3, 0):
     import queue as Queue
 else:
